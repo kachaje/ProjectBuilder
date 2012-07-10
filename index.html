@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Welcome to Baobab Project Builder</title>
+        <link rel="stylesheet" type="text/css" media="all" href="css/styles.css" />
+        <script type="text/javascript" language="javascript" src="scripts/createApplicationDashboardForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/createPatientDashboardForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/createCustomForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/createReportForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/createOtherForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/javascripts.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/createLoginForm.js"></script>
+        <script type="text/javascript" language="javascript" src="scripts/utils.js"></script>
+        <script type="text/javascript" language="javascript">
+            <!--
+    	                          
+            setTimeout("addEncounters(__$('encounters').value)", 100);
+            setTimeout("if(__$('platform').value=='Other'){addOther(true);} else {addOther(false);}", 100);
+	            
+            //-->
+        </script>
+    </head>
+    <body>
+    <center>
+        <form action="build_forms.php" method="post" >
+            <h2>Baobab Health Trust Systems: Project Builder</h2>
+            <div id="frm0" class="frame">
+                <table border="0" cellspacing="5" cellpadding="10">
+                    <tr>
+                        <td colspan="2" style="text-align: center;" class="banner">
+                            Project Details
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Project Name
+                        </td>
+                        <td>
+                            <input type="text" id="project_name" name="project_name" 
+                                   value="" style="width: 100%;" class="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Target Platform
+                        </td>
+                        <td>
+                            <select id="platform" name="platform" style="width: 100%;" class="text" 
+                                    onchange="if(this.value=='Other'){addOther('other_type', true);} else {addOther('other_type', false);}">
+                                <option></option>
+                                <option>Desktop</option>
+                                <option>Android</option>
+                                <option>Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table style="float: right;" cellspacing="0" cellpadding="10">
+                                <tbody id="other_type">	                            
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number of forms/encounters
+                        </td>
+                        <td>
+                            <input type="number" id="encounters" name="encounters" 
+                                   value="0" style="width: 100%;" class="text" 
+                                   onchange="addEncounters(this.value)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table style="float: right;" cellspacing="0" cellpadding="10">
+                                <tbody id="encounter_types">	                            
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input id="next0" type="button" class="button disabled" 
+                                   style="float: right;" value="Next" />
+                            <input type="button" class="button reset" style="float: left;"
+                                   value="Reset" onclick="if(confirm('Do you really want to discard additions?')){ document.forms[0].reset(); addEncounters(__$('encounters').value); if(__$('platform').value=='Other'){addOther(true);} else {addOther(false);}}" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="content">
+            </div>
+        </form>
+    </center>
+</body>
+</html>
